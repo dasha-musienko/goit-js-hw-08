@@ -15,5 +15,5 @@ function addTimeIntoStorage({seconds}) {
   
 }
 
-player.setCurrentTime(localStorage.getItem(CURRENT_TIME))
+player.setCurrentTime(localStorage.getItem(CURRENT_TIME) || 0)
 

@@ -4,7 +4,7 @@ const FEEDBACK_FORM_STATE = "feedback-form-state";
 const formEl = document.querySelector("form")
 const inputEl = document.querySelector("input")
 const messageEl = document.querySelector("textarea")
-const formData = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE)) || {
+let formData = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE)) || {
   email: "",
   message: ""
 } ;
@@ -25,10 +25,18 @@ function inputHandler (evt) {
 }
 
 function submitHandler (evt) {
+  if (!(messageEl.value && inputEl.value)) {
+    window.alert("Заповніть усі поля");
+    return
+  }
   evt.preventDefault();
   console.log(formData)
   evt.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_FORM_STATE)
+  formData = {
+    email: "",
+    message: ""
+  }
 }
 
 
